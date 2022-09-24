@@ -1,79 +1,37 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require("bcrypt")
 
+var validateEmail = function(email) {
+  var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  return re.test(email)
+};
 
-
-// Defines sub document where the profile pictures will be stored.
-const userMediaSchema = new Schema({
-  url: {
-    type: String,
-  },
-});
-
-// string, id, boolean, number
 const userSchema = new Schema({
-    username: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    password: {
-      type: String,
-      required: true,
-      minlength: 8,
-    },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-      match: [/.+@.+\..+/, 'Must match an email address!'],
-    },
-    first_name: {
-      type: String,
-    },
-    last_name: {
-      type: String,
-    },
-    date_of_birth: {
-      type: Date,
-    },
-    zip_code: {
-      type: Number,
-    },
-    // stores profile pictures
-    media: [userMediaSchema],
-    profilePicture: {
-      type: String,
-    },
-    // attaches owner's pets
-    pet: [{
-      type: Schema.Types.ObjectId,
-      ref: "Pet",
-    }],
-    post: [{
-      type: Schema.Types.ObjectId,
-      ref: "Post",
-    }],
-    lastUpdated: { 
-      type: Date, 
-      default: Date.now, 
-    },
-    messages: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Messages'
-      }
-    ],
-    likes: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Pet'
-      }
-    ],
-},
-{
-  timestamps: true,
-});
+  firstName: {
+    type: String,
+    required: [true, "First name cannot be left blank"],
+    trim: true,
+  },
+  lastName:{
+    type: String,
+    required: [true,"Last name cannot be left blank"],
+    trim: true,
+  },
+  email:{
+    type: String,
+    trim: true,
+    lowercase: true,
+    unique: true,
+    required: 'Email address is required',
+    validate: [validateEmail, 'Please fill a valid email address'],
+    match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
+  },
+  password:{
+    type:String,
+    required: true,
+    minlength:5,
+  }
+})
 
 
 // set up pre-save middleware to create password
