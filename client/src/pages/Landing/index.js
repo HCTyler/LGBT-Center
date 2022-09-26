@@ -1,12 +1,14 @@
-import React from 'react'
-import "./styles.scss"
+import React from 'react';
+import "./styles.scss";
+import Login from '../../components/LogIn/login';
+
 
 
 const Landing = () => {
   return (
-    <div>
-      <h1>This is the main page</h1>
-    </div>
+    <section className="landing-background">
+      <Login />
+    </section>
   )
 }
 

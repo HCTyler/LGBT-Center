@@ -6,6 +6,7 @@ var validateEmail = function(email) {
   return re.test(email)
 };
 
+
 const userSchema = new Schema({
   firstName: {
     type: String,
@@ -30,6 +31,15 @@ const userSchema = new Schema({
     type:String,
     required: true,
     minlength:5,
+  },
+  birthdate:{
+    type:String,
+    require: true,
+    trim:true,
+  },
+  zipcode:{
+    type:Number,
+    required:true,
   }
 })
 
@@ -46,7 +56,7 @@ userSchema.pre('save', async function (next) {
 
 // compare the incoming password with the hashed password
 userSchema.methods.isCorrectPassword = async function (password) {
-  return bcrypt.compare(password, this.password);
+  return await bcrypt.compare(password, this.password);
 };
 
 // const UserMedia = model('UserMedia', userMediaSchema);
