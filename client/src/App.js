@@ -17,7 +17,7 @@ export default function App() {
         {/* <Volunteer /> */}
       </div>
       <div>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </>
   );
