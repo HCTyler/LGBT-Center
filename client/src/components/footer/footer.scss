@@ -1,6 +1,11 @@
 /* default styles here for older browsers. 
     I tend to go for a 600px - 960px width max but using percentages
 */
+.footer{
+    width:100vw;
+    position:fixed;
+    
+}
 @media only screen and (min-width: 960px) {
     /* styles for browsers larger than 960px; */
 }
