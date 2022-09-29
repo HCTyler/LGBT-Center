@@ -1,6 +1,6 @@
 import
-LoginBackground 
-from "./login-mobile.jpg"
+LoginBackground
+    from "./login-mobile.jpg"
 
 export default
-LoginBackground
+    LoginBackground

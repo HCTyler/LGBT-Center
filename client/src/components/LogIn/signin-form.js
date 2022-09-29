@@ -11,7 +11,6 @@ function SigninForm(props) {
       </div>
       <form>
         <div>
-          <label></label>
           <input
             placeholder="Username"
             name="username"
@@ -20,7 +19,6 @@ function SigninForm(props) {
           />
         </div>
         <div>
-          <label></label>
           <input
             placeholder="Password"
             name="password"

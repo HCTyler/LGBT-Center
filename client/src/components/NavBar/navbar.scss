@@ -1,6 +1,18 @@
 /* default styles here for older browsers. 
     I tend to go for a 600px - 960px width max but using percentages
 */
+.navbar{
+    display:flex;
+    position:fixed;
+    bottom:0;
+    width: 100vw;
+    overflow:hidden;
+    height:5vh;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgb(116, 132, 255);
+
+}
 @media only screen and (min-width: 960px) {
     /* styles for browsers larger than 960px; */
 }
